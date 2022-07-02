@@ -20,13 +20,13 @@
 
 新建`.gitignore`文件，在文件中写入忽略上传的文件
 
-- Test/
-
-- *bin
+> Test/
+>
+> *bin
 
 5.添加当前目录下待管理的文件
 
-`git add .`
+`git add .`      /      `git add *`
 
 6.查看当前工作目录状态
 
@@ -49,3 +49,37 @@
 `git reset --hard HEAD^`
 
 ### 远程代码版本管理
+
+1.申请远端仓库链接
+
+- Https链接 ：`https://github.com/Vire0/GitCommand.git`
+
+2.本地仓库和远端仓库进行关联
+
+`git remote add origin https://github.com/Vire0/GitCommand.git`
+
+3.将本地仓库分支推送到远端
+
+`git push origin master`
+
+在第一次push中，要求输入用户名和密码，密码无回显
+
+4.创建分支/删除分支/查看分支/切换分支
+
+- 创建分支
+
+`git checkout -b dev`
+
+`dev`是分支名，常用的还有`feature`
+
+- 删除分支
+
+`git checkout -d dev`
+
+- 查看分支
+
+`git branch -a` 查看所有分支
+
+- 切换分支
+
+`git checkout dev`
