@@ -60,11 +60,7 @@
 
 3.将本地仓库分支推送到远端
 
-解除三方验签`git config --global http.sslVerify false`
-
 `git push origin master`
-
-其中`origin`为远端仓库名，`master`为分支名，推送其他分支则修改分支名
 
 在第一次push中，要求输入用户名和密码，密码无回显
 
@@ -72,19 +68,13 @@
 
 - 创建分支
 
-法一
-
 `git checkout -b dev`
 
 `dev`是分支名，常用的还有`feature`
 
-法二
-
-`git branch dev`
-
 - 删除分支
 
-`git branch -d dev`
+`git checkout -d dev`
 
 - 查看分支
 
@@ -93,15 +83,3 @@
 - 切换分支
 
 `git checkout dev`
-
-5.更新与合并
-
-- 拉取远端分支的更新
-
-`git pull origin master`
-
-> git pull 的含义就是获取（git fetch）并 合并(merge)远端的改动
-
-- 合并改动
-
-`git merge dev`
