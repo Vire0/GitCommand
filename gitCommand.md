@@ -104,7 +104,9 @@
 
 为软件发布创建标签
 
-`git tag 1.0.0 <ID %10d>`
+指定版本打标签：`git tag V0.0.9 -m "bate version 0.0.9" <ID %10d>`
+
+当前版本打标签：`git tag -a V1.0.0 -m "release version 1.0.0"`
 
 将标签推送到远端仓库，直接推送即可，无需提交
 
@@ -114,8 +116,8 @@
 
 - 删除本地标签
 
-`git tag -d 1.0.0`
+`git tag -d V1.0.0`
 
 - 删除远端标签
 
-`git push origin :refs/tags/1.0.0`
+`git push origin :refs/tags/V1.0.0`
