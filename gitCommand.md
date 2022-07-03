@@ -44,9 +44,21 @@
 
 `git log --oneline`
 
+`git reflog` 表示回退需要的步数
+
 9.回退到任意版本
 
-`git reset --hard commit_id`
+`git reset --hard <commit_id>`
+
+- --hard: 本地库的指针移动的同时，重置暂存区，重置工作区
+
+`git reset --mixed <commit_id>`
+
+- --mixed: 本地库的指针移动的同时，重置暂存区，但是工作区不动
+
+`git reset --soft <commit_id>`
+
+- --soft: 本地库的指针移动，暂存区和工作区都不动
 
 10.回退到上一个版本
 
@@ -86,7 +98,11 @@
 
 - 查看分支
 
+`git branch` 查看分支
+
 `git branch -a` 查看所有分支
+
+`git branch -v` 查看分支信息，带提交信息
 
 - 切换分支
 
