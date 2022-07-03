@@ -83,3 +83,21 @@
 - 切换分支
 
 `git checkout dev`
+
+5.回退远端的代码版本(替换本地改动)
+
+`git fetch origin`
+
+`git reset --hard origin/master`
+
+### 打标签与发布
+
+1.标签
+
+为软件发布创建标签
+
+`git tag 1.0.0 <ID %10d>`
+
+将标签推送到远端仓库，直接推送即可，无需提交
+
+`git push origin master --tags`
