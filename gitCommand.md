@@ -40,6 +40,10 @@
 
 `git log`
 
+`git log --pretty=oneline`
+
+`git log --oneline`
+
 9.回退到任意版本
 
 `git reset --hard commit_id`
@@ -61,6 +65,8 @@
 3.将本地仓库分支推送到远端
 
 `git push origin master`
+
+`git push -u origin master`
 
 在第一次push中，要求输入用户名和密码，密码无回显
 
@@ -103,3 +109,13 @@
 将标签推送到远端仓库，直接推送即可，无需提交
 
 `git push origin master --tags`
+
+2.删除标签
+
+- 删除本地标签
+
+`git tag -d 1.0.0`
+
+- 删除远端标签
+
+`git push origin :refs/tags/1.0.0`
