@@ -74,7 +74,9 @@
 
 - 删除分支
 
-`git checkout -d dev`
+`git branch -d dev`
+
+`git push origin --delete dev` 删除远端分支
 
 - 查看分支
 
