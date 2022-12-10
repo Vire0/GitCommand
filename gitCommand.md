@@ -60,9 +60,9 @@
 
 - --soft: 本地库的指针移动，暂存区和工作区都不动
 
-10.回退到上一个版本
+10.将提交回退到上一个版本
 
-`git reset --hard HEAD^`
+`git reset --soft HEAD^`  或 `git reset --soft HEAD~1`
 
 ### 远程代码版本管理
 
@@ -137,3 +137,126 @@
 - 删除远端标签
 
 `git push origin :refs/tags/V1.0.0`
+
+
+
+# Github常用工作流程
+
+1.从远端仓库拉取项目工程
+
+`git clone https://github.com/Vire0/GitCommand.git`
+
+2.建立个人 branch
+
+`git checkout -b my-branch`
+
+3.查看硬盘和git暂存区之间的变化
+
+`git diff` 或 `git stauts`
+
+4.将硬盘中的改动增加到暂存区
+
+`git add <changed_file>` 
+
+5.将暂存区中的修改提交到本地git仓库
+
+`git commit`
+
+6.将本地git仓库的提交push到远端仓库
+
+`git push origin my-branch`
+
+7.切换本地到master branch下
+
+`git checkout master`
+
+8.同步远端master更新
+
+`git pull origin master`
+
+9.再回到个人branch
+
+`git checkout my-branch`
+
+10.同步master的改变
+
+`git rebase master`
+
+11.同步改变后提交到远端个人分支
+
+`git push -f origin my-branch`
+
+
+
+# Gerrit常用工作流
+
+1.从远端仓库拉取项目工程
+
+`git clone https://github.com/Vire0/GitCommand.git`
+
+2.查看所有项目分支
+
+`git branch -a`
+
+3.切换到自己负责项目的分支
+
+`git checkout <branch_name>`
+
+4.查看当前分支的提交记录
+
+`git log`
+
+5.产看当前分支的所有变化或状态
+
+`git diff` 或 `git stauts`
+
+6.更新远端项目工程
+
+- `git stash`  -暂存当前状态
+- `git pull --rebase`  -把远端的更新同步到本地改变
+- `git stash pop` -把暂存当前状态合并到最新远端代码的本地git中
+
+7.将硬盘中的改动增加到暂存区
+
+`git add <changed_file>` 
+
+8.将暂存区中的修改提交到本地git仓库
+
+`git commit`
+
+9.提交到Gerrit后审核合并
+
+`git push origin :refs/<branch_name>`
+
+
+
+# git撤销修改技巧
+
+1.撤销掉本地磁盘的修改
+
+`git checkout <changed_file>` 或 `git restore <changed_file>`
+
+2.修改从暂存区移除，但是保留本地磁盘的修改
+
+`git reset <changed_file>` 或 `git restore --staged <changed_file>`
+
+3.撤销暂存区和本地磁盘的修改
+
+`git checkout HEAD <changed_file>`
+
+4.撤销本地git中的提交回退到暂存区
+
+`git reset --soft HEAD^` = `git reset --soft HEAD~1`
+
+5.同时撤销本地git中的提交和暂存区状态的add回退到本地磁盘修改状态
+
+`git reset HEAD~1` = `git reset --mixed HEAD~1`
+
+6.完整恢复到初始状态，本地磁盘的修改也删除
+
+`git reset --hard HEAD~1`  > 不建议使用
+
+7.通过增加一次提交来回退到上一次的状态 - 好处是公有分支回退的时候较好
+
+`git revert HEAD`
+
