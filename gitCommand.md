@@ -140,6 +140,86 @@
 
 
 
+# git撤销修改技巧
+
+1.撤销掉本地磁盘的修改
+
+`git checkout <changed_file>` 或 `git restore <changed_file>`
+
+2.修改从暂存区移除，但是保留本地磁盘的修改
+
+`git reset <changed_file>` 或 `git restore --staged <changed_file>`
+
+3.撤销暂存区和本地磁盘的修改
+
+`git checkout HEAD <changed_file>`
+
+4.撤销本地git中的提交回退到暂存区
+
+`git reset --soft HEAD^` = `git reset --soft HEAD~1`
+
+5.同时撤销本地git中的提交和暂存区状态的add回退到本地磁盘修改状态
+
+`git reset HEAD~1` = `git reset --mixed HEAD~1`
+
+6.完整恢复到初始状态，本地磁盘的修改也删除
+
+`git reset --hard HEAD~1`  > 不建议使用
+
+7.通过增加一次提交来回退到上一次的状态 - 好处是公有分支回退的时候较好
+
+`git revert HEAD`
+
+
+
+# git submodule 基本使用技巧
+
+1.子模块首次下载更新
+
+` git submodule update --init` 
+
+如果模块中存在嵌套子模块
+
+` git submodule update --init --recursive`
+
+ 2.子模块拉取更新
+
+拉取包含子模块在内的所有变更
+
+` git pull --recurse-submodules`
+
+仅拉取子模块的变更
+
+` git submodule update --remote`
+
+3.重置所有子模块
+
+` git submodule foreach 'git reset --hard'` 
+
+` git submodule foreach --recursive 'git reset --hard'`
+
+4.单独更新某个子模块
+
+`cd [submodule directory]`
+
+` git checkout [branch]`
+
+` git pull`
+
+拉取远端最新分支submodule
+
+` git pull origin [branch]` 
+
+5.提交子模块变更
+
+` cd ..`
+
+` git add [submodule directory]`
+
+` gti commit -m "submodule update to ..."`
+
+
+
 # Github常用工作流程
 
 1.从远端仓库拉取项目工程
@@ -227,36 +307,4 @@
 9.提交到Gerrit后审核合并
 
 `git push origin :refs/<branch_name>`
-
-
-
-# git撤销修改技巧
-
-1.撤销掉本地磁盘的修改
-
-`git checkout <changed_file>` 或 `git restore <changed_file>`
-
-2.修改从暂存区移除，但是保留本地磁盘的修改
-
-`git reset <changed_file>` 或 `git restore --staged <changed_file>`
-
-3.撤销暂存区和本地磁盘的修改
-
-`git checkout HEAD <changed_file>`
-
-4.撤销本地git中的提交回退到暂存区
-
-`git reset --soft HEAD^` = `git reset --soft HEAD~1`
-
-5.同时撤销本地git中的提交和暂存区状态的add回退到本地磁盘修改状态
-
-`git reset HEAD~1` = `git reset --mixed HEAD~1`
-
-6.完整恢复到初始状态，本地磁盘的修改也删除
-
-`git reset --hard HEAD~1`  > 不建议使用
-
-7.通过增加一次提交来回退到上一次的状态 - 好处是公有分支回退的时候较好
-
-`git revert HEAD`
 
